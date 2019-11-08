@@ -1,0 +1,61 @@
+<h3>Produtos</h3>
+
+<p><a href="?edit=0">Adicionar</a><br></p>
+
+{if $edit >= 0}
+<form method="post" enctype="multipart/form-data">
+    <label>Categoria:
+        <select name="data[categoria_id]">
+            {section name=i loop=$categorias}
+            <option value="{$categorias[i].id}" {if $produto.categoria_id eq $categorias[i].id}selected="selected"{/if}>
+                    {$categorias[i].nome}
+        </option>
+            {/section}
+        </select>
+    </label>
+    <label>Nome: <input type="text" name="data[nome]" value="{$produto.nome}"></label>
+    <label>Autor: <input type="text" name="data[autor]" value="{$produto.autor}"></label>
+    <label>Editora: <input type="text" name="data[editora]" value="{$produto.editora}"></label>
+    <label>Valor: <input type="text" name="data[valor]" value="{$produto.valor}"></label>
+    <label>Imagem: <input type="file" name="file" value=""></label>
+    <label>Descrição: 
+        <textarea name="data[descricao]" cols="20" style="height: 200px;">{$produto.descricao}</textarea>
+    </label>
+
+
+    <label><input type="submit" name="submit" value="Salvar" style="width: 60px;"></label>
+    <input type="hidden" name="id" value="{$edit}">
+</form>
+
+<div class="clearfix"></div>
+
+{/if}
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 5%;">ID</th>
+            <th>Nome</th>
+            <th>Autor</th>
+            <th>Editora</th>
+            <th>Valor</th>
+            <th style="width: 100px;">Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {section name=i loop=$produtos}
+        <tr>
+            <td>{$produtos[i].id}</td>
+            <td>{$produtos[i].nome}</td>
+            <td>{$produtos[i].autor}</td>
+            <td>{$produtos[i].editora}</td>
+            <td>{$produtos[i].valor}</td>
+            <td>
+                <a href="?edit={$produtos[i].id}"><img src="images/icons/edit.png"></a>
+                &nbsp;
+                <a href="?delete={$produtos[i].id}"><img src="images/icons/delete.png"></a>
+            </td>
+        </tr>
+        {/section}
+    </tbody>
+</table>

@@ -1,0 +1,24 @@
+<h3>{if $titulo.nome}{$titulo.nome}{else}Home{/if}</h3>
+
+<div id="list-products">
+    {section name=i loop=$produtos}
+    <dl>
+        <dd>
+            <a href="produto_view.php?id={$produtos[i].id}">
+                <img src="images/produtos/{$produtos[i].id}.jpg">
+            </a>
+        </dd>
+        <dt>
+            <a href="produto_view.php?id={$produtos[i].id}">
+                {$produtos[i].nome}
+            </a>
+        <div class="valor">
+            Somente por: R$ {$produtos[i].valor|string_format:"%.2f"}
+        </div>
+        </dt>
+    </dl>
+    {sectionelse}
+        Nenhum produto localizado
+    {/section}
+    <div class="clearfix"></div>
+</div>

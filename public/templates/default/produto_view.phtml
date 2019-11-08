@@ -1,0 +1,21 @@
+<h3>{$produto.nome}</h3>
+<div id="product-view">
+    <div id="product-image">
+
+        <img src="images/produtos/{$produto.id}.jpg">
+
+    </div>
+
+    <div id="produtct-description">
+        {$produto.descricao}
+
+    </div>
+    <div class="content-line clearfix"></div>
+    <div class="valor">
+
+        Somente por: R$ {$produto.valor|string_format:"%.2f"}
+    </div>
+    <div class="carrinho">
+        <a href="comprar.php?produto_id={$produto.id}">Comprar</a>
+    </div>
+</div>
